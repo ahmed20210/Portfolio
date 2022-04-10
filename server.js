@@ -31,11 +31,11 @@ let appdata = {};
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist/index.html"));
 });
-
+console.log("server started");
 app.post("/send", (req, res) => {
   appdata = req.body;
   main().catch(console.error);
-  res.send('<h1>Thank you for your message</h1>');
+  console.log(appdata);
 });
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log("Example app listening on port 3000!"));
+app.listen(port, () => console.log(" app listening on port"+port));

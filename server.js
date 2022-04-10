@@ -3,24 +3,29 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
+const nodemailer = require("nodemailer");
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(  express.static(path.join(__dirname, "dist")));
 
-const nodemailer = require("nodemailer");
+
+// mailer
+
 async function main() {
   let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
+    service: "hotmail",
     secure: false,
     auth: {
-      user: "ahmdmsty222@gmail.com",
+      user: "ahmedsharabash2@hotmail.com",
       pass: "ahmed123456789$",
     },
   });
 
   let info = await transporter.sendMail({
-    from: `${appdata.email} <ahmdmsty222@gmail.com>`, // sender address
+    from: ` ${appdata.email} <ahmedsharabash2@hotmail.com>`, // sender address
     to: "ahmdmsty345@gmail.com", // list of receivers
     subject: appdata.name, // Subject line
     text: "",
@@ -28,11 +33,11 @@ async function main() {
   });
 }
 let appdata = {};
-app.get("https://sharabash.herokuapp.com/", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist/index.html"));
 });
 console.log("server started");
-app.post("https://sharabash.herokuapp.com/send", (req, res) => {
+app.post("/send", (req, res) => {
   appdata = req.body;
   main().then(res => console.log("done")).catch(console.error);
   console.log(appdata);

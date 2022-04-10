@@ -11,17 +11,17 @@ const nodemailer = require("nodemailer");
 async function main() {
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 587,
+    port: 465,
     secure: false,
     auth: {
-      user: "ahmdmsty222@gmail.com",
-      pass: "ahmed123456789$",
+      user: process.env.AUTH_USER, 
+      pass: process.env.AUTH_PASS,
     },
   });
 
   let info = await transporter.sendMail({
-    from: ` ${appdata.email} <ahmdmsty222@gmail.com>`, // sender address
-    to: "ahmdmsty139@gmail.com", // list of receivers
+    from: `${appdata.email} <ahmdmsty222@gmail.com>`, // sender address
+    to: "ahmdmsty345@gmail.com", // list of receivers
     subject: appdata.name, // Subject line
     text: "",
     html: `<h1>${appdata.name}</h1><p>${appdata.message}</p>`, // plain text body
@@ -34,8 +34,8 @@ app.get("/", (req, res) => {
 console.log("server started");
 app.post("/send", (req, res) => {
   appdata = req.body;
-  main().catch(console.error);
+  main().then(res => console.log("done")).catch(console.error);
   console.log(appdata);
 });
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(" app listening on port"+port));
+app.listen(port, () => console.log(" app listening on port"+ port));

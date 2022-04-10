@@ -28,11 +28,11 @@ async function main() {
   });
 }
 let appdata = {};
-app.get("/", (req, res) => {
+app.get("https://sharabash.herokuapp.com/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist/index.html"));
 });
 console.log("server started");
-app.post("/send", (req, res) => {
+app.post("https://sharabash.herokuapp.com/send", (req, res) => {
   appdata = req.body;
   main().then(res => console.log("done")).catch(console.error);
   console.log(appdata);

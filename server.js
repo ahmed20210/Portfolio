@@ -40,7 +40,6 @@ console.log("server started");
 app.post("/send", (req, res) => {
   appdata = req.body;
   main().then(res => console.log("done")).catch(console.error);
-  console.log(appdata);
 });
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(" app listening on port"+ port));

@@ -28,9 +28,14 @@ async function main() {
   });
 }
 let appdata = {};
+app.get("/", (req, res) => {
+  res.send( "Hello World!" );
+});
+
 app.post("/send", (req, res) => {
   appdata = req.body;
   main().catch(console.error);
+  res.send('<h1>Thank you for your message</h1>');
 });
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log("Example app listening on port 3000!"));

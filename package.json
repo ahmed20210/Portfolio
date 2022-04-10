@@ -5,19 +5,13 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-   "start" : "node server.js"
+    "start": "node server.js"
   },
-
   "engines": {
-    "node":"v16.13.0"},
+    "node": "v16.13.0"
+  },
   "author": "",
   "license": "ISC",
-  
-
-
-
-
-
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
@@ -37,8 +31,8 @@
     "express": "^4.17.3",
     "nodemailer": "^6.7.3",
     "nodemailer-express-handlebars": "^5.0.0",
+    "nodemon": "^2.0.15",
     "swiper": "^8.0.7",
     "wowjs": "^1.1.3"
   }
-
 }

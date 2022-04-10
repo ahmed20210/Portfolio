@@ -29,7 +29,7 @@ async function main() {
 }
 let appdata = {};
 app.get("/", (req, res) => {
-  res.send( "Hello World!" );
+  res.sendFile(path.join(__dirname, "dist/index.html"));
 });
 
 app.post("/send", (req, res) => {

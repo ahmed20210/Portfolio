@@ -15,17 +15,17 @@ app.use(  express.static(path.join(__dirname, "dist")));
 // mailer
 
 async function main() {
-  let transporter = nodemailer.createTransport("SMTP", {
+  let transporter = nodemailer.createTransport({
     service: "hotmail",
-    secure: true,
+    secure: false,
     auth: {
-      user: "ahmedsharabash2@hotmail.com",
-      pass: "ahmed123456789$",
-    },
+      user: "ahmedsharabash345@hotmail.com",
+      pass: "ahmed123456789$"
+    }
   });
 
   let info = await transporter.sendMail({
-    from: ` ${appdata.email} <ahmedsharabash2@hotmail.com>`, // sender address
+    from: ` ${appdata.email} <ahmedsharabash345@hotmail.com>`, // sender address
     to: "ahmdmsty345@gmail.com", // list of receivers
     subject: appdata.name, // Subject line
     text: "",
